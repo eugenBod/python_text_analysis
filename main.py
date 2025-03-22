@@ -25,7 +25,7 @@ def split_text(text):
 
 
 def remove_punctuation_from_text(text):
-    symbols_for_remove = """.,!?:;/('")<+-*>@#$%^"""
+    symbols_for_remove = """.,!?:;/('")[]{}<+-*>@#$%^"""
     for symbol in symbols_for_remove:
         text = text.replace(symbol, "")
 
