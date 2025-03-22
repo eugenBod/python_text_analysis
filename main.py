@@ -27,7 +27,7 @@ def split_text(text):
 def remove_punctuation_from_text(text):
     symbols_for_remove = """.,!?:;/('")[]{}<+-*>@#$%^"""
     for symbol in symbols_for_remove:
-        text = text.replace(symbol, "")
+        text = text.replace(symbol, " ")
 
     return text
 
@@ -43,21 +43,27 @@ def counting_vowels_in_text(text):
 
 
 def repeating_words_in_text(text):
-    duplicate_words = {}
+    words_count = {}
 
     for word in text:
-        if word in duplicate_words:
-            duplicate_words[word] += 1
+        if word in words_count:
+            words_count[word] += 1
         else:
-            duplicate_words[word] = 1
+            words_count[word] = 1
 
-    print(f"Сколько раз слова повторяются в тексте:\n{duplicate_words}")
+    for word, count in words_count.items():
+        print(f"Слово {word} повторяется {count} раз/раза")
 
 
-user_text_input = input("Введите текст: ")
-clean_text = remove_punctuation_from_text(user_text_input)
-clean_split_text = split_text(clean_text)
-counting_words_in_text(clean_split_text)
-finding_longest_word(clean_split_text)
-counting_vowels_in_text(clean_text)
-repeating_words_in_text(clean_split_text)
+while True:
+    user_text_input = input("Введите текст: ")
+    if not user_text_input:
+        print("Пустой текст.")
+    else:
+        clean_text = remove_punctuation_from_text(user_text_input)
+        clean_split_text = split_text(clean_text)
+        counting_words_in_text(clean_split_text)
+        finding_longest_word(clean_split_text)
+        counting_vowels_in_text(clean_text)
+        repeating_words_in_text(clean_split_text)
+        break
